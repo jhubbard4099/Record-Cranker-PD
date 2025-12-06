@@ -1,0 +1,6 @@
+name=Record Cranker
+author=Jon Hubbard
+description=An incremental idle game, initiall made for a 24 hour game jam
+bundleID=com.jhubbard4099.record
+version=0.1
+buildNumber=1
