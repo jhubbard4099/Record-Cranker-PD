@@ -13,11 +13,10 @@ class('SelectorMenuContainer').extends(gfx.sprite)
 -- main menu variables
 local selectorMenu = pd.ui.gridview.new(32, 32)
 local selectorMenuSprite = gfx.sprite.new()
-local selectorMenuOptions = {"*Hardware*", "*Upgrades*"}
 
 -- Constructor
 function SelectorMenuContainer:init(x, y)
-   selectorMenu:setNumberOfColumns(#selectorMenuOptions)
+   selectorMenu:setNumberOfColumns(#selectorMenuOptions + 1)
    selectorMenu:setNumberOfRows(1)
    selectorMenu:setCellPadding(2, 45, 2, 2)
 
@@ -33,15 +32,22 @@ end
 
 -- Function override for drawing each gridview cell
 function selectorMenu:drawCell(section, row, column, selected, x, y, width, height)
-   if selected then
-      gfx.fillRoundRect(x, y, width*2.5, height, 4)
-      gfx.setImageDrawMode(gfx.kDrawModeFillWhite)
+   if column == 3 then
+      if selected then
+         gfx.drawCircleInRect(197, 47, width * 5.2, height * 5.2)
+         gfx.setImageDrawMode(gfx.kDrawModeCopy)
+      end
    else
-      gfx.setImageDrawMode(gfx.kDrawModeCopy)
-   end
+      if selected then
+         gfx.fillRoundRect(x, y, width*2.5, height, 4)
+         gfx.setImageDrawMode(gfx.kDrawModeFillWhite)
+      else
+         gfx.setImageDrawMode(gfx.kDrawModeCopy)
+      end
 
-   local fontHeight = gfx.getSystemFont():getHeight()
-   gfx.drawTextInRect(selectorMenuOptions[column], x, y + (height/2 - fontHeight/2) + 2, width*2.5, height, nil, nil, kTextAlignment.center)
+      local fontHeight = gfx.getSystemFont():getHeight()
+      gfx.drawTextInRect(selectorMenuOptions[column], x, y + (height/2 - fontHeight/2) + 2, width*2.5, height, nil, nil, kTextAlignment.center)
+   end
 end
 
 -- Update function to be run every tick
@@ -50,9 +56,9 @@ function SelectorMenuContainer:update()
 
    -- draw main menu
    if selectorMenu.needsDisplay then
-      local selectorMenuImage = gfx.image.new(172, 220)
+      local selectorMenuImage = gfx.image.new(380, 220)
       gfx.pushContext(selectorMenuImage)
-         selectorMenu:drawInRect(0, 0, 172, 220)
+         selectorMenu:drawInRect(0, 0, 380, 220)
       gfx.popContext()
       selectorMenuSprite:setImage(selectorMenuImage)
    end

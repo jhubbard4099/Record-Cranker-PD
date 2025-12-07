@@ -13,7 +13,6 @@ class('BuildingMenuContainer').extends(gfx.sprite)
 -- main menu variables
 local buildingMenu = pd.ui.gridview.new(0, 32)
 local buildingMenuSprite = gfx.sprite.new()
-local buildingMenuOptions = {"Needle", "Motor", "Speaker", "Auto DJ"}
 
 -- Constructor
 function BuildingMenuContainer:init(x, y)
@@ -28,6 +27,11 @@ function BuildingMenuContainer:init(x, y)
    buildingMenuSprite:add()
 
    self.menu = buildingMenu
+
+   self.needlePrice = 15
+   self.motorPrice = 1000
+   self.speakerPrice = 50000
+   self.djPrice = 200000
 end
 
 -- Function override for drawing each gridview cell

@@ -14,10 +14,15 @@ function Record:init(x, y)
    self:setImage(recordSpriteImage)
    self:setScale(1.25)
    self:moveTo(x, y)
-   
-   self.velocity = 0;
-   self.notes = 0;
-   self.rpms = 0;
+
+   self.velocity = 0
+   self.notes = 0
+   self.rpms = 0
+
+   self.needles = 0
+   self.motors = 0
+   self.speakers = 0
+   self.djs = 0
 end
 
 -- Record update function
@@ -36,5 +41,5 @@ function Record:update()
    -- new rotation is current rotation + temporary rpms + permanent rpms
    local netChange = self:getRotation() + self.velocity + self.rpms
    self:setRotation(netChange)
-   print(self.velocity)
+   -- print(self.velocity)
 end

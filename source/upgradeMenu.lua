@@ -13,7 +13,6 @@ class('UpgradeMenuContainer').extends(gfx.sprite)
 -- main menu variables
 local upgradeMenu = pd.ui.gridview.new(0, 32)
 local upgradeMenuSprite = gfx.sprite.new()
-local upgradeMenuOptions = {"Titanium Crank", "Ruby-Tipped Needles", "Faster Motors", "Deeper Bass", "Better Wages"}
 
 -- Constructor
 function UpgradeMenuContainer:init(x, y)
